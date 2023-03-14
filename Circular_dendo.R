@@ -25,3 +25,17 @@ colors = c("red", "blue", "green", "black",'magenta')
 clus4 = cutree(hc, 5)
 plot(as.phylo(hc), type = "fan", tip.color = colors[clus4],
      label.offset = 1, cex = 0.7)
+
+
+# fan tree plot
+# Colors
+hc <- hc %>%
+  color_branches(k = 5) %>%
+  color_labels(k = 5)
+# reduced label size
+par(cex=1,plt=c(0.1,0.9,0,0.7))
+# par(mfrow = c(2,3), omi=c(0.5,0.3,0,0), plt=c(0.1,0.9,0,0.7))
+# par(mar = c(5,0,4,0))
+# Fan tree plot with colored labels
+circlize_dendrogram(hc,dend_track_height = 0.5, 
+                    labels = TRUE,labels_track_height = 0.1)  
