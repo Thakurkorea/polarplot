@@ -11,6 +11,10 @@ rand_matrix <- matrix(rpois(200, 3), nrow = 50, ncol = 4)
 row_names<-paste0('variable',1:nrow(rand_matrix))
 row.names(rand_matrix)<-row_names
 hc <- hclust(dist(rand_matrix), "ward.D2")
+# examine the cluster data
+clus4 = cutree(hc, 4)
+# Subset the original data to obtain the first cluster
+first_cluster <- rand_matrix[clus4 == 1, ]
 
 # create a star tree dendrogram plot
 plot(as.phylo(hc), type = "fan", cex = 0.6, edge.width = 0.5, edge.col = "gray")
